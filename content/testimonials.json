@@ -1,0 +1,5 @@
+[
+  { "quote": "Dailer's Web transformó completamente nuestra presencia online. El sitio es hermoso, rápido y nos ha traído muchos más clientes.", "author": "María González", "role": "CEO, Restaurante Bella Vista", "avatar_icon": "fas fa-user", "avatar_bg_gradient": "bg-gradient-to-br from-cyan-400 to-blue-500" },
+  { "quote": "Profesionales excepcionales. Entendieron perfectamente lo que necesitábamos y lo entregaron a tiempo. Muy recomendados.", "author": "Carlos Mendoza", "role": "Director, TechSolutions", "avatar_icon": "fas fa-user", "avatar_bg_gradient": "bg-gradient-to-br from-green-400 to-teal-500" },
+  { "quote": "El equipo de Dailer's Web es increíble. Nuestro e-commerce funciona perfectamente y las ventas han aumentado un 200%.", "author": "Ana Rodríguez", "role": "Fundadora, Moda Urbana", "avatar_icon": "fas fa-user", "avatar_bg_gradient": "bg-gradient-to-br from-purple-400 to-pink-500" }
+]
