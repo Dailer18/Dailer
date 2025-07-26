@@ -1,0 +1,8 @@
+[
+  { "name": "Desarrollo Web", "description": "Front-End y Back-End completo con las últimas tecnologías", "icon": "fas fa-code" },
+  { "name": "Tiendas Online", "description": "E-commerce funcional y optimizado para ventas", "icon": "fas fa-shopping-cart" },
+  { "name": "Landing Pages", "description": "Páginas de aterrizaje que convierten visitantes en clientes", "icon": "fas fa-rocket" },
+  { "name": "Optimización SEO", "description": "Mejoramos tu posicionamiento y velocidad de carga", "icon": "fas fa-search" },
+  { "name": "Mantenimiento", "description": "Soporte continuo y actualizaciones de seguridad", "icon": "fas fa-tools" },
+  { "name": "Diseño Responsivo", "description": "Sitios que se adaptan perfectamente a cualquier dispositivo", "icon": "fas fa-mobile-alt" }
+]
