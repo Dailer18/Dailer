@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dailer's Web - Transformamos ideas en experiencias digitales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilo general para la fuente */
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Habilita el desplazamiento suave para toda la página */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fondos con degradado */
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        
+        /* Efecto de brillo neón para botones */
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        /* Efecto de hover para tarjetas */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+        
+        /* Animación de entrada con desvanecimiento */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animación de flotación para la imagen del héroe */
+        .hero-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Control de visibilidad para el slider de testimonios */
+        .testimonial-slider {
+            display: none;
+        }
+        
+        .testimonial-slider.active {
+            display: block;
+        }
+        
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Diseño de cuadrícula para el portafolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Iconos de servicio con degradado de color */
+        .service-icon {
+            background: linear-gradient(135deg, #00ffff, #0080ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 gradient-bg backdrop-blur-sm">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold">
+                    <span class="text-cyan-400">Dailer's</span> Web
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="hover:text-cyan-400 transition-colors">Inicio</a>
+                    <a href="#servicios" class="hover:text-cyan-400 transition-colors">Servicios</a>
+                    <!-- Vuelve a la navegación por anclaje -->
+                    <a href="#portafolio" class="hover:text-cyan-400 transition-colors">Portafolio</a>
+                    <a href="#clientes" class="hover:text-cyan-400 transition-colors">Clientes</a>
+                    <a href="#contacto" class="hover:text-cyan-400 transition-colors">Contáctanos</a>
+                </div>
+                <button class="bg-cyan-500 hover:bg-cyan-600 px-6 py-2 rounded-full transition-colors neon-glow">
+                    Solicita tu web
+                </button>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#inicio" class="block py-2 hover:text-cyan-400">Inicio</a>
+                <a href="#servicios" class="block py-2 hover:text-cyan-400">Servicios</a>
+                <!-- Vuelve a la navegación por anclaje en móvil -->
+                <a href="#portafolio" class="block py-2 hover:text-cyan-400">Portafolio</a>
+                <a href="#clientes" class="block py-2 hover:text-cyan-400">Clientes</a>
+                <a href="#contacto" class="block py-2 hover:text-cyan-400">Contáctanos</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="min-h-screen flex items-center gradient-bg pt-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        Creamos Sitios Web que <span class="text-cyan-400">Impresionan</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-gray-300">
+                        Aumenta tu presencia digital con diseños modernos, funcionales y adaptados a tus necesidades.
+                    </p>
+                    <div class="space-x-4">
+                        <!-- Este botón ahora abre el modal de portafolio -->
+                        <button id="open-portfolio-modal-hero" class="bg-cyan-500 hover:bg-cyan-600 px-8 py-3 rounded-full transition-colors neon-glow">
+                            Ver Portafolio
+                        </button>
+                        <button id="cotiza-btn" class="border border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white px-8 py-3 rounded-full transition-colors">
+                            Cotiza Ahora
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-animation">
+                    <svg viewBox="0 0 400 300" class="w-full h-auto">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0080ff;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Computer Screen -->
+                        <rect x="50" y="80" width="300" height="180" rx="10" fill="#2d2d2d" stroke="url(#grad1)" stroke-width="2"/>
+                        <rect x="60" y="90" width="280" height="140" rx="5" fill="#1a1a1a"/>
+                        <!-- Screen Content -->
+                        <rect x="80" y="110" width="60" height="8" fill="url(#grad1)"/>
+                        <rect x="80" y="125" width="100" height="6" fill="#666"/>
+                        <rect x="80" y="140" width="80" height="6" fill="#666"/>
+                        <rect x="200" y="110" width="120" height="80" fill="#333" rx="5"/>
+                        <!-- Stand -->
+                        <rect x="180" y="260" width="40" height="20" fill="#2d2d2d"/>
+                        <rect x="160" y="280" width="80" height="10" fill="#2d2d2d"/>
+                        <!-- Floating Elements -->
+                        <circle cx="100" cy="50" r="15" fill="url(#grad1)" opacity="0.7">
+                            <animate attributeName="cy" values="50;30;50" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="320" cy="40" r="10" fill="url(#grad1)" opacity="0.5">
+                            <animate attributeName="cy" values="40;60;40" dur="4s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-4">¿Qué hacemos?</h2>
+                <p class="text-gray-400 text-lg">Ofrecemos soluciones completas para tu presencia digital</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-700 p-8 rounded-lg card-hover fade-in">
+                    <i class="fas fa-code text-4xl service-icon mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">Desarrollo Web</h3>
+                    <p class="text-gray-400">Front-End y Back-End completo con las últimas tecnologías</p>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg card-hover fade-in">
+                    <i class="fas fa-shopping-cart text-4xl service-icon mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">Tiendas Online</h3>
+                    <p class="text-gray-400">E-commerce funcional y optimizado para ventas</p>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg card-hover fade-in">
+                    <i class="fas fa-rocket text-4xl service-icon mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">Landing Pages</h3>
+                    <p class="text-gray-400">Páginas de aterrizaje que convierten visitantes en clientes</p>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg card-hover fade-in">
+                    <i class="fas fa-search text-4xl service-icon mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">Optimización SEO</h3>
+                    <p class="text-gray-400">Mejoramos tu posicionamiento y velocidad de carga</p>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg card-hover fade-in">
+                    <i class="fas fa-tools text-4xl service-icon mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">Mantenimiento</h3>
+                    <p class="text-gray-400">Soporte continuo y actualizaciones de seguridad</p>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg card-hover fade-in">
+                    <i class="fas fa-mobile-alt text-4xl service-icon mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-4">Diseño Responsivo</h3>
+                    <p class="text-gray-400">Sitios que se adaptan perfectamente a cualquier dispositivo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section (Original, now accessible by scrolling or direct link if added) -->
+    <section id="portafolio" class="py-20 gradient-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-4">Algunos de nuestros trabajos</h2>
+                <p class="text-gray-400 text-lg">Proyectos que demuestran nuestra experiencia y creatividad</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="bg-gray-800 rounded-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-utensils text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Restaurante Gourmet</h3>
+                        <p class="text-gray-400 mb-4">Sitio web elegante para restaurante con reservas online</p>
+                        <button class="text-cyan-400 hover:text-cyan-300 transition-colors">Ver proyecto →</button>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Gimnasio FitLife</h3>
+                        <p class="text-gray-400 mb-4">Plataforma completa con membresías y clases online</p>
+                        <button class="text-cyan-400 hover:text-cyan-300 transition-colors">Ver proyecto →</button>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center">
+                        <i class="fas fa-store text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tienda TechStore</h3>
+                        <p class="text-gray-400 mb-4">E-commerce moderno con carrito y pagos integrados</p>
+                        <button class="text-cyan-400 hover:text-cyan-300 transition-colors">Ver proyecto →</button>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                        <i class="fas fa-briefcase text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Consultoría Legal</h3>
+                        <p class="text-gray-400 mb-4">Sitio profesional con sistema de citas y consultas</p>
+                        <button class="text-cyan-400 hover:text-cyan-300 transition-colors">Ver proyecto →</button>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Academia Online</h3>
+                        <p class="text-gray-400 mb-4">Plataforma educativa con cursos y certificaciones</p>
+                        <button class="text-cyan-400 hover:text-cyan-300 transition-colors">Ver proyecto →</button>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center">
+                        <i class="fas fa-heart text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Clínica Médica</h3>
+                        <p class="text-gray-400 mb-4">Sistema integral con citas y historiales médicos</p>
+                        <button class="text-cyan-400 hover:text-cyan-300 transition-colors">Ver proyecto →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="clientes" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-4">Lo que dicen nuestros clientes</h2>
+                <p class="text-gray-400 text-lg">Testimonios reales de empresas que confiaron en nosotros</p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div id="testimonial-container" class="relative">
+                    <div class="testimonial-slider active">
+                        <div class="bg-gray-700 p-8 rounded-lg text-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                                <i class="fas fa-user text-2xl text-white"></i>
+                            </div>
+                            <p class="text-lg mb-6 italic">"Dailer's Web transformó completamente nuestra presencia online. El sitio es hermoso, rápido y nos ha traído muchos más clientes."</p>
+                            <h4 class="font-semibold text-cyan-400">María González</h4>
+                            <p class="text-gray-400">CEO, Restaurante Bella Vista</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slider">
+                        <div class="bg-gray-700 p-8 rounded-lg text-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-teal-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                                <i class="fas fa-user text-2xl text-white"></i>
+                            </div>
+                            <p class="text-lg mb-6 italic">"Profesionales excepcionales. Entendieron perfectamente lo que necesitábamos y lo entregaron a tiempo. Muy recomendados."</p>
+                            <h4 class="font-semibold text-cyan-400">Carlos Mendoza</h4>
+                            <p class="text-gray-400">Director, TechSolutions</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-slider">
+                        <div class="bg-gray-700 p-8 rounded-lg text-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                                <i class="fas fa-user text-2xl text-white"></i>
+                            </div>
+                            <p class="text-lg mb-6 italic">"El equipo de Dailer's Web es increíble. Nuestro e-commerce funciona perfectamente y las ventas han aumentado un 200%."</p>
+                            <h4 class="font-semibold text-cyan-400">Ana Rodríguez</h4>
+                            <p class="text-gray-400">Fundadora, Moda Urbana</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-cyan-500" data-slide="0"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-500" data-slide="1"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-500" data-slide="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 gradient-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-4">¿Listo para tener tu propia web?</h2>
+                <p class="text-gray-400 text-lg">Cuéntanos sobre tu proyecto y te ayudaremos a hacerlo realidad</p>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <form id="contact-form" class="space-y-6 fade-in">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nombre completo</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Correo electrónico</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Tipo de sitio web</label>
+                        <select id="website-type" class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors">
+                            <option value="">Selecciona una opción</option>
+                            <option value="landing">Landing Page</option>
+                            <option value="ecommerce">Tienda Online</option>
+                            <option value="corporate">Sitio Corporativo</option>
+                            <option value="blog">Blog/Revista</option>
+                            <option value="portfolio">Portafolio</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Cuéntanos sobre tu proyecto</label>
+                        <textarea id="message" rows="5" required class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:border-cyan-500 focus:outline-none transition-colors resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 py-3 rounded-lg font-semibold transition-colors neon-glow">
+                        Enviar mensaje
+                    </button>
+                </form>
+                <div id="success-message" class="hidden mt-6 p-4 bg-green-600 rounded-lg text-center">
+                    <i class="fas fa-check-circle text-2xl mb-2"></i>
+                    <p>¡Mensaje enviado exitosamente! Te contactaremos pronto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">
+                        <span class="text-cyan-400">Dailer's</span> Web
+                    </div>
+                    <p class="text-gray-400 mb-4">Transformamos ideas en experiencias digitales</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Enlaces rápidos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#inicio" class="hover:text-cyan-400 transition-colors">Inicio</a></li>
+                        <li><a href="#servicios" class="hover:text-cyan-400 transition-colors">Servicios</a></li>
+                        <!-- Vuelve a la navegación por anclaje en el footer -->
+                        <li><a href="#portafolio" class="hover:text-cyan-400 transition-colors">Portafolio</a></li>
+                        <li><a href="#clientes" class="hover:text-cyan-400 transition-colors">Clientes</a></li>
+                        <li><a href="#contacto" class="hover:text-cyan-400 transition-colors">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Servicios</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Desarrollo Web</li>
+                        <li>E-commerce</li>
+                        <li>Landing Pages</li>
+                        <li>SEO</li>
+                        <li>Mantenimiento</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contacto</h4>
+                    <p class="text-gray-400 mb-2">
+                        <i class="fas fa-envelope mr-2"></i>
+                        contacto@dailersweb.com
+                    </p>
+                    <p class="text-gray-400">
+                        <i class="fas fa-phone mr-2"></i>
+                        +1 (555) 123-4567
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Dailer's Web. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Pricing Modal -->
+    <div id="pricing-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-gray-800 rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-700">
+                <h2 class="text-2xl font-bold text-white">Elige tu tipo de sitio web</h2>
+                <button id="close-modal" class="text-gray-400 hover:text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="p-6">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- OPCIÓN 1: Sitio Predefinido -->
+                    <div class="bg-gray-700 rounded-lg p-6 text-center card-hover border-2 border-transparent hover:border-cyan-500 transition-all">
+                        <div class="bg-gradient-to-br from-green-400 to-emerald-500 w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-rocket text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Sitio Predefinido</h3>
+                        <div class="text-3xl font-bold text-cyan-400 mb-4">$50</div>
+                        <p class="text-gray-300 mb-6">Diseños ya hechos, adaptables, rápidos de implementar.</p>
+                        
+                        <!-- Características incluidas -->
+                        <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Diseño responsivo</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>5 páginas incluidas</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Formulario de contacto</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Optimización SEO básica</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Entrega en 3-5 días</li>
+                        </ul>
+                        
+                        <button class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition-colors">
+                            Seleccionar Plan
+                        </button>
+                    </div>
+                    
+                    <!-- OPCIÓN 2: Tienda Online Premium -->
+                    <div class="bg-gray-700 rounded-lg p-6 text-center card-hover border-2 border-cyan-500 relative">
+                        <!-- Badge de "Más Popular" -->
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-semibold">Más Popular</span>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-cyan-400 to-blue-500 w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Tienda Online Premium</h3>
+                        <div class="text-3xl font-bold text-cyan-400 mb-4">$70</div>
+                        <p class="text-gray-300 mb-6">Incluye carrito, pasarela de pago y diseño elegante.</p>
+                        
+                        <!-- Características incluidas -->
+                        <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                            <li><i class="fas fa-check text-cyan-400 mr-2"></i>Todo lo del plan anterior</li>
+                            <li><i class="fas fa-check text-cyan-400 mr-2"></i>Carrito de compras</li>
+                            <li><i class="fas fa-check text-cyan-400 mr-2"></i>Pasarela de pagos</li>
+                            <li><i class="fas fa-check text-cyan-400 mr-2"></i>Panel de administración</li>
+                            <li><i class="fas fa-check text-cyan-400 mr-2"></i>Entrega en 7-10 días</li>
+                        </ul>
+                        
+                        <button class="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-lg font-semibold transition-colors neon-glow">
+                            Seleccionar Plan
+                        </button>
+                    </div>
+                    
+                    <!-- OPCIÓN 3: Diseño Personalizado -->
+                    <div class="bg-gray-700 rounded-lg p-6 text-center card-hover border-2 border-transparent hover:border-purple-500 transition-all">
+                        <div class="bg-gradient-to-br from-purple-400 to-pink-500 w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-magic text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Diseño 100% Personalizado</h3>
+                        <div class="text-2xl font-bold text-purple-400 mb-4">A consultar</div>
+                        <p class="text-gray-300 mb-6">Nos adaptamos a lo que imaginas, desde cero.</p>
+                        
+                        <!-- Características incluidas -->
+                        <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                            <li><i class="fas fa-check text-purple-400 mr-2"></i>Diseño único y exclusivo</li>
+                            <li><i class="fas fa-check text-purple-400 mr-2"></i>Funcionalidades a medida</li>
+                            <li><i class="fas fa-check text-purple-400 mr-2"></i>Integración con APIs</li>
+                            <li><i class="fas fa-check text-purple-400 mr-2"></i>Soporte prioritario</li>
+                            <li><i class="fas fa-check text-purple-400 mr-2"></i>Tiempo según proyecto</li>
+                        </ul>
+                        
+                        <button class="w-full bg-purple-500 hover:bg-purple-600 text-white py-3 rounded-lg font-semibold transition-colors">
+                            Solicitar Cotización
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal (Nuevo) -->
+    <div id="portfolio-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-gray-800 rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-700">
+                <h2 class="text-2xl font-bold text-white">Nuestros Proyectos</h2>
+                <button id="close-portfolio-modal" class="text-gray-400 hover:text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="p-6">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Placeholder Project Card 1 -->
+                    <div class="bg-gray-700 rounded-lg p-4 text-center card-hover">
+                        <div class="h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-laptop-code text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Proyecto Web Corporativo</h3>
+                        <p class="text-gray-300 text-sm">Desarrollo de un sitio web moderno para una empresa de consultoría.</p>
+                    </div>
+                    <!-- Placeholder Project Card 2 -->
+                    <div class="bg-gray-700 rounded-lg p-4 text-center card-hover">
+                        <div class="h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-store text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">E-commerce de Ropa</h3>
+                        <p class="text-gray-300 text-sm">Tienda online con carrito de compras y pasarela de pago integrada.</p>
+                    </div>
+                    <!-- Placeholder Project Card 3 -->
+                    <div class="bg-gray-700 rounded-lg p-4 text-center card-hover">
+                        <div class="h-32 bg-gradient-to-br from-green-500 to-lime-500 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Plataforma de Analítica</h3>
+                        <p class="text-gray-300 text-sm">Dashboard interactivo para visualización de datos empresariales.</p>
+                    </div>
+                    <!-- Placeholder Project Card 4 -->
+                    <div class="bg-gray-700 rounded-lg p-4 text-center card-hover">
+                        <div class="h-32 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-book text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Blog de Viajes</h3>
+                        <p class="text-gray-300 text-sm">Diseño y desarrollo de un blog personal con sistema de comentarios.</p>
+                    </div>
+                    <!-- Placeholder Project Card 5 -->
+                    <div class="bg-gray-700 rounded-lg p-4 text-center card-hover">
+                        <div class="h-32 bg-gradient-to-br from-yellow-500 to-amber-500 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-palette text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Portafolio de Artista</h3>
+                        <p class="text-gray-300 text-sm">Galería de arte online para mostrar obras y contacto.</p>
+                    </div>
+                    <!-- Placeholder Project Card 6 -->
+                    <div class="bg-gray-700 rounded-lg p-4 text-center card-hover">
+                        <div class="h-32 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Sitio Web de Salud</h3>
+                        <p class="text-gray-300 text-sm">Página informativa para clínica con sección de citas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Fade-in animation on scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // Testimonial slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slider');
+        const dots = document.querySelectorAll('.testimonial-dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('bg-cyan-500');
+                dots[i].classList.add('bg-gray-500');
+            });
+            slides[index].classList.add('active');
+            dots[index].classList.remove('bg-gray-500');
+            dots[index].classList.add('bg-cyan-500');
+            currentSlide = index;
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const slideIndex = parseInt(e.target.dataset.slide);
+                showSlide(slideIndex);
+            });
+        });
+
+        // Auto-advance testimonials
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 5000); // Change slide every 5 seconds
+
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+
+        if (contactForm && successMessage) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Aquí normalmente enviarías los datos del formulario a un servidor
+                // Para este ejemplo, solo mostraremos un mensaje de éxito
+                contactForm.reset();
+                successMessage.classList.remove('hidden');
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 5000); // Ocultar mensaje después de 5 segundos
+            });
+        }
+
+        // Pricing Modal functionality
+        const cotizaBtn = document.getElementById('cotiza-btn');
+        const pricingModal = document.getElementById('pricing-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        // Show pricing modal when "Cotiza Ahora" button is clicked
+        if (cotizaBtn && pricingModal) {
+            cotizaBtn.addEventListener('click', () => {
+                pricingModal.classList.remove('hidden');
+            });
+        }
+
+        // Hide pricing modal when close button is clicked
+        if (closeModalBtn && pricingModal) {
+            closeModalBtn.addEventListener('click', () => {
+                pricingModal.classList.add('hidden');
+            });
+        }
+
+        // Hide pricing modal when clicking outside the modal content
+        if (pricingModal) {
+            pricingModal.addEventListener('click', (e) => {
+                // Si el objetivo del clic es el propio modal (no sus hijos), oculta el modal
+                if (e.target === pricingModal) {
+                    pricingModal.classList.add('hidden');
+                }
+            });
+        }
+
+        // Portfolio Modal functionality
+        const openPortfolioModalHero = document.getElementById('open-portfolio-modal-hero');
+        const portfolioModal = document.getElementById('portfolio-modal');
+        const closePortfolioModalBtn = document.getElementById('close-portfolio-modal');
+
+        // Función para abrir el modal de portafolio
+        function showPortfolioModal() {
+            portfolioModal.classList.remove('hidden');
+            // Si el menú móvil está abierto, ciérralo al abrir el modal
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        // Función para cerrar el modal de portafolio
+        function hidePortfolioModal() {
+            portfolioModal.classList.add('hidden');
+        }
+
+        // Show portfolio modal when "Ver Portafolio" button is clicked (hero section)
+        if (openPortfolioModalHero && portfolioModal) {
+            openPortfolioModalHero.addEventListener('click', showPortfolioModal);
+        }
+
+        // Hide portfolio modal when close button is clicked
+        if (closePortfolioModalBtn && portfolioModal) {
+            closePortfolioModalBtn.addEventListener('click', hidePortfolioModal);
+        }
+
+        // Hide portfolio modal when clicking outside the modal content
+        if (portfolioModal) {
+            portfolioModal.addEventListener('click', (e) => {
+                if (e.target === portfolioModal) {
+                    hidePortfolioModal();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
