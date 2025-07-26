@@ -1,0 +1,8 @@
+[
+  { "title": "Restaurante Gourmet", "description": "Sitio web elegante para restaurante con reservas online", "icon": "fas fa-utensils", "icon_bg_gradient": "bg-gradient-to-br from-purple-500 to-pink-500", "project_link": "#" },
+  { "title": "Gimnasio FitLife", "description": "Plataforma completa con membresías y clases online", "icon": "fas fa-dumbbell", "icon_bg_gradient": "bg-gradient-to-br from-blue-500 to-teal-500", "project_link": "#" },
+  { "title": "Tienda TechStore", "description": "E-commerce moderno con carrito y pagos integrados", "icon": "fas fa-store", "icon_bg_gradient": "bg-gradient-to-br from-green-500 to-blue-500", "project_link": "#" },
+  { "title": "Consultoría Legal", "description": "Sitio profesional con sistema de citas y consultas", "icon": "fas fa-briefcase", "icon_bg_gradient": "bg-gradient-to-br from-orange-500 to-red-500", "project_link": "#" },
+  { "title": "Academia Online", "description": "Plataforma educativa con cursos y certificaciones", "icon": "fas fa-graduation-cap", "icon_bg_gradient": "bg-gradient-to-br from-indigo-500 to-purple-500", "project_link": "#" },
+  { "title": "Clínica Médica", "description": "Sistema integral con citas y historiales médicos", "icon": "fas fa-heart", "icon_bg_gradient": "bg-gradient-to-br from-pink-500 to-rose-500", "project_link": "#" }
+]
