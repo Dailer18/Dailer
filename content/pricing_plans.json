@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Sitio Predefinido",
+    "price": "$50",
+    "description": "Diseños ya hechos, adaptables, rápidos de implementar.",
+    "icon": "fas fa-rocket",
+    "icon_bg_gradient": "bg-gradient-to-br from-green-400 to-emerald-500",
+    "features": ["Diseño responsivo", "5 páginas incluidas", "Formulario de contacto", "Optimización SEO básica", "Entrega en 3-5 días"],
+    "button_text": "Seleccionar Plan",
+    "is_popular": false
+  },
+  {
+    "title": "Tienda Online Premium",
+    "price": "$70",
+    "description": "Incluye carrito, pasarela de pago y diseño elegante.",
+    "icon": "fas fa-shopping-cart",
+    "icon_bg_gradient": "bg-gradient-to-br from-cyan-400 to-blue-500",
+    "features": ["Todo lo del plan anterior", "Carrito de compras", "Pasarela de pagos", "Panel de administración", "Entrega en 7-10 días"],
+    "button_text": "Seleccionar Plan",
+    "is_popular": true
+  },
+  {
+    "title": "Diseño 100% Personalizado",
+    "price": "A consultar",
+    "description": "Nos adaptamos a lo que imaginas, desde cero.",
+    "icon": "fas fa-magic",
+    "icon_bg_gradient": "bg-gradient-to-br from-purple-400 to-pink-500",
+    "features": ["Diseño único y exclusivo", "Funcionalidades a medida", "Integración con APIs", "Soporte 24/7", "Entrega según complejidad"],
+    "button_text": "Consultar Precio",
+    "is_popular": false
+  }
+]
