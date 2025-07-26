@@ -1,0 +1,101 @@
+backend:
+  name: git-gateway
+  branch: main # O la rama donde tengas tu código (ej. master)
+
+media_folder: "public/uploads" # Carpeta donde se guardarán las imágenes subidas
+public_folder: "/uploads" # Ruta pública para acceder a las imágenes
+
+collections:
+  - name: "settings"
+    label: "Configuración del Sitio"
+    files:
+      - file: "content/settings.json"
+        label: "Información General del Sitio"
+        name: "site_settings"
+        fields:
+          - {label: "Título del Sitio (Parte 1, ej. Dailer's)", name: "site_name_part1", widget: "string", default: "Dailer's"}
+          - {label: "Título del Sitio (Parte 2, ej. Web)", name: "site_name_part2", widget: "string", default: "Web"}
+          - {label: "Eslogan del Sitio (para el título de la página)", name: "site_slogan", widget: "string", default: "Transformamos ideas en experiencias digitales"}
+          - {label: "Texto Botón Header (Solicita tu web)", name: "header_request_web_button_text", widget: "string", default: "Solicita tu web"}
+          - {label: "Título Principal (Hero)", name: "hero_title", widget: "string", default: "Creamos Sitios Web que <span class='text-cyan-400'>Impresionan</span>"}
+          - {label: "Subtítulo del Hero", name: "hero_subtitle", widget: "string", default: "Aumenta tu presencia digital con diseños modernos, funcionales y adaptados a tus necesidades."}
+          - {label: "Texto Botón Hero (Ver Portafolio)", name: "hero_portfolio_button_text", widget: "string", default: "Ver Portafolio"}
+          - {label: "Texto Botón Hero (Cotiza Ahora)", name: "hero_quote_button_text", widget: "string", default: "Cotiza Ahora"}
+          - {label: "Título Sección Servicios", name: "services_title", widget: "string", default: "¿Qué hacemos?"}
+          - {label: "Subtítulo Sección Servicios", name: "services_subtitle", widget: "string", default: "Ofrecemos soluciones completas para tu presencia digital"}
+          - {label: "Título Sección Portafolio", name: "portfolio_title", widget: "string", default: "Algunos de nuestros trabajos"}
+          - {label: "Subtítulo Sección Portafolio", name: "portfolio_subtitle", widget: "string", default: "Proyectos que demuestran nuestra experiencia y creatividad"}
+          - {label: "Título Sección Testimonios", name: "testimonials_title", widget: "string", default: "Lo que dicen nuestros clientes"}
+          - {label: "Subtítulo Sección Testimonios", name: "testimonials_subtitle", widget: "string", default: "Testimonios reales de empresas que confiaron en nosotros"}
+          - {label: "Título Sección Contacto", name: "contact_title", widget: "string", default: "¿Listo para tener tu propia web?"}
+          - {label: "Subtítulo Sección Contacto", name: "contact_subtitle", widget: "string", default: "Cuéntanos sobre tu proyecto y te ayudaremos a hacerlo realidad"}
+          - {label: "Etiqueta Campo Nombre (Formulario)", name: "form_name_label", widget: "string", default: "Nombre completo"}
+          - {label: "Etiqueta Campo Email (Formulario)", name: "form_email_label", widget: "string", default: "Correo electrónico"}
+          - {label: "Etiqueta Campo Tipo de Web (Formulario)", name: "form_website_type_label", widget: "string", default: "Tipo de sitio web"}
+          - {label: "Opción por defecto Select (Formulario)", name: "form_select_option_default", widget: "string", default: "Selecciona una opción"}
+          - {label: "Opción Landing Page (Formulario)", name: "option_landing", widget: "string", default: "Landing Page"}
+          - {label: "Opción Tienda Online (Formulario)", name: "option_ecommerce", widget: "string", default: "Tienda Online"}
+          - {label: "Opción Sitio Corporativo (Formulario)", name: "option_corporate", widget: "string", default: "Sitio Corporativo"}
+          - {label: "Opción Blog/Revista (Formulario)", name: "option_blog", widget: "string", default: "Blog/Revista"}
+          - {label: "Opción Portafolio (Formulario)", name: "option_portfolio", widget: "string", default: "Portafolio"}
+          - {label: "Opción Otro (Formulario)", name: "option_other", widget: "string", default: "Otro"}
+          - {label: "Etiqueta Campo Mensaje (Formulario)", name: "form_message_label", widget: "string", default: "Cuéntanos sobre tu proyecto"}
+          - {label: "Texto Botón Enviar (Formulario)", name: "form_submit_button_text", widget: "string", default: "Enviar mensaje"}
+          - {label: "Mensaje de Éxito Formulario", name: "form_success_message", widget: "string", default: "¡Mensaje enviado exitosamente! Te contactaremos pronto."}
+          - {label: "Eslogan del Footer", name: "footer_slogan", widget: "string", default: "Transformamos ideas en experiencias digitales"}
+          - {label: "Enlace Instagram", name: "instagram_link", widget: "string", default: "#"}
+          - {label: "Enlace Facebook", name: "facebook_link", widget: "string", default: "#"}
+          - {label: "Número de WhatsApp (con código de país, ej. 593999999999)", name: "whatsapp_number", widget: "string", default: "593999999999"}
+          - {label: "Correo Electrónico (Contacto)", name: "contact_email", widget: "string", default: "contacto@dailersweb.com"}
+          - {label: "Teléfono (Contacto)", name: "contact_phone", widget: "string", default: "+1 (555) 123-4567"}
+          - {label: "Texto Copyright", name: "copyright_text", widget: "string", default: "Dailer's Web"}
+          - {label: "Texto Insignia 'Más Popular' (Planes)", name: "popular_badge_text", widget: "string", default: "Más Popular"}
+
+  - name: "services"
+    label: "Servicios"
+    folder: "content/services"
+    create: true
+    slug: "{{name}}"
+    fields:
+      - {label: "Nombre del Servicio", name: "name", widget: "string"}
+      - {label: "Descripción", name: "description", widget: "text"}
+      - {label: "Icono Font Awesome (ej. fas fa-code)", name: "icon", widget: "string"}
+
+  - name: "portfolio"
+    label: "Portafolio"
+    folder: "content/portfolio"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - {label: "Título del Proyecto", name: "title", widget: "string"}
+      - {label: "Descripción", name: "description", widget: "text"}
+      - {label: "Icono Font Awesome (ej. fas fa-utensils)", name: "icon", widget: "string"}
+      - {label: "Clases de Degradado para Fondo de Icono (ej. from-purple-500 to-pink-500)", name: "icon_bg_gradient", widget: "string"}
+      - {label: "Enlace al Proyecto (URL)", name: "project_link", widget: "string", default: "#"}
+
+  - name: "testimonials"
+    label: "Testimonios"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{author}}"
+    fields:
+      - {label: "Cita del Testimonio", name: "quote", widget: "text"}
+      - {label: "Autor", name: "author", widget: "string"}
+      - {label: "Cargo/Empresa del Autor", name: "role", widget: "string"}
+      - {label: "Icono Avatar Font Awesome (ej. fas fa-user)", name: "avatar_icon", widget: "string"}
+      - {label: "Clases de Degradado para Fondo de Avatar (ej. from-cyan-400 to-blue-500)", name: "avatar_bg_gradient", widget: "string"}
+
+  - name: "pricing_plans"
+    label: "Planes de Precios"
+    folder: "content/pricing_plans"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - {label: "Título del Plan", name: "title", widget: "string"}
+      - {label: "Precio", name: "price", widget: "string", default: "$0"}
+      - {label: "Descripción Corta", name: "description", widget: "text"}
+      - {label: "Icono Font Awesome (ej. fas fa-rocket)", name: "icon", widget: "string"}
+      - {label: "Clases de Degradado para Fondo de Icono (ej. from-green-400 to-emerald-500)", name: "icon_bg_gradient", widget: "string"}
+      - {label: "Características Incluidas", name: "features", widget: "list", field: {label: "Característica", name: "feature", widget: "string"}}
+      - {label: "Texto del Botón", name: "button_text", widget: "string", default: "Seleccionar Plan"}
+      - {label: "¿Es el plan más popular?", name: "is_popular", widget: "boolean", default: false}
